@@ -5,7 +5,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/bfhl", (req,res)=>{
+app.post("/bfhl", (req,res)=>{
     const FULL_NAME = "shoib_khan";      
     const DOB = "20032005";            
     const EMAIL = "shoib2337.be22@chitkara.edu.in";      
