@@ -8,6 +8,9 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/bfhl", bfhlRoutes);
+app.get("/", (req, res) => {
+  res.send("API is running. Please use POST /bfhl with JSON data.");
+});
 
 app.use((req, res) => {
   res.status(404).json({
@@ -16,7 +19,7 @@ app.use((req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

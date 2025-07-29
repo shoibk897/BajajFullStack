@@ -1,9 +1,9 @@
 export function isAlpha(ch) {
-  return /^[a-zA-Z]$/.test(ch);
+  return  /^[A-Za-z]$/.test(ch);
 }
 
 export function isNumeric(ch) {
-  return /^\d+$/.test(ch);
+  return /^[0-9]$/.test(ch);
 }
 
 export function isSpecialChar(ch) {
