@@ -1,26 +1,28 @@
 import express from "express";
 import cors from "cors";
+
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-app.post("/bfhl", (req,res)=>{
-    const FULL_NAME = "shoib_khan";      
-    const DOB = "20032005";            
-    const EMAIL = "shoib2337.be22@chitkara.edu.in";      
-    const ROLL_NUMBER = "2210992337";   
-    const isAlpha = (ch) => /^[A-Za-z]$/.test(ch);
-    const isNumeric = (ch) => /^[0-9]$/.test(ch);
-    const isSpecialChar = (ch) => /[^A-Za-z0-9]/.test(ch);  
+const FULL_NAME = "shoib_khan";       
+const DOB = "20032005";               
+const EMAIL = "shoib2337.be22@chitkara.edu.in";       
+const ROLL_NUMBER = "2210992337";   
 
+const isAlpha = (ch) => /^[A-Za-z]$/.test(ch);
+const isNumeric = (ch) => /^[0-9]+$/.test(ch);
+const isSpecialChar = (ch) => /[^A-Za-z0-9]/.test(ch);
+
+app.post("/bfhl", (req, res) => {
   try {
     const data = req.body.data;
 
     if (!Array.isArray(data)) {
       throw new Error("Input 'data' must be an array");
     }
-  
+
     const numbers = data.filter(item => isNumeric(item.toString()));
     const even_numbers = numbers.filter(n => parseInt(n) % 2 === 0);
     const odd_numbers = numbers.filter(n => parseInt(n) % 2 !== 0);
@@ -59,7 +61,6 @@ app.post("/bfhl", (req,res)=>{
       message: error.message
     });
   }
-
 });
 
 app.get("/", (req, res) => {
@@ -73,7 +74,4 @@ app.use((req, res) => {
   });
 });
 
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+export default app;
