@@ -15,6 +15,11 @@ const isAlpha = (ch) => /^[A-Za-z]$/.test(ch);
 const isNumeric = (ch) => /^[0-9]+$/.test(ch);
 const isSpecialChar = (ch) => /[^A-Za-z0-9]/.test(ch);
 
+app.get("/bfhl", (req, res) => {
+  res.send("Use POST with JSON data to access this endpoint.");
+});
+
+
 app.post("/bfhl", (req, res) => {
   try {
     const data = req.body.data;
